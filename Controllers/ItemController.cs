@@ -21,6 +21,12 @@ namespace JulyActivity.Controllers
         {
             IEnumerable<Item> objeList = _db.Items;
             return View(objeList);
+        } 
+        
+        public IActionResult Create()
+        {
+            
+            return View();
         }
     }
 }
