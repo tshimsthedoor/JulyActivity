@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JulyActivity.Controllers
 {
-    public class AppointmentController1 : Controller
+    public class AppointmentController : Controller
     {
         public IActionResult Index()
         {
