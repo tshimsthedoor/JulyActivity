@@ -44,6 +44,20 @@ namespace JulyActivity.Controllers
             }
             return View(obj);
 
+        } // Post Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int? id)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Expenses.Remove(id);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return View(id);
+
         }
     }
 
