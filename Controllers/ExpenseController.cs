@@ -78,6 +78,39 @@ namespace JulyActivity.Controllers
             return RedirectToAction("Index");
 
         }
+
+        // GET UPDATTE
+
+        public IActionResult Update(int? id)
+        {
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Expenses.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+        // Post UPDATE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Expense obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Expenses.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return View(obj);
+
+        }
     }
 
 }
